@@ -1,0 +1,111 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}{{ object.title_caso }} {% endblock %}
+
+
+{% block casos %}
+    {% if user.is_authenticated %}
+        <div class="jumbotron jumbotron-fluid" style="background-color: rgb(240, 240, 240);">
+            <div class="container">
+                <br>
+                <h2 style="text-transform: uppercase">{{ object.title_caso }}</h2>
+                <hr>
+                <small>
+                    <span class="badge" style="color:white; font-size:14px; font-family:Calibri; background-color: rgb(19, 19, 66);">
+                        {{ object.direito_caso }}
+                    </span>
+                    Data: <small>{{ object.data }}</small><br>
+                    <img src="{{ object.img_caso.url }}" style="width:300px; margin-top:5px;" class="card-img-top" alt="Hello X'ss"/><br>
+                </small>
+                <br>
+                <a href="{% url 'update_caso' object.pk %}">(Edit Caso)</a>
+                <a href="{% url 'delete_caso' object.pk %}"> | (Delete Caso)</a><br><br>
+            </div>
+        </div>
+        <br>
+        <div class="container">
+            Materia | semestre:
+            <strong>
+                <a style="color:rgb(21, 143, 42); font-size:16px; font-family:Calibri;  margin-top: 5px;">{{ object.materia_caso }}</a> |
+                <a style="color:rgb(18, 19, 18); font-size:16px; font-family:Calibri;  margin-top: 5px;">{{ object.title_caso }}</a>
+                <br><br>
+            </strong>
+            <small style="font-size:19px; font-family:Calibri; text-align:justify">{{ object.content_caso | safe }}</small>
+            <br>
+            <h3 style="margin-top: 20px;">Legislação pertinente</h3>
+            <small style="font-family:Calibri; font-size: 19px; text-align:justify;">{{ object.lei_caso | safe }}</small>
+            <br>
+            <h3 style="margin-top: 20px;">Jurisprudência</h3>
+            <small style="font-family:Calibri; font-size: 19px; text-align:justify;">{{ object.jurisprudencia_caso | safe }}</small>
+            <br>
+            <small><strong>Obrigado pela Leitura! .MR</strong></small><br>
+            <br>
+            <hr>
+            <h6><strong>Tags</strong> | {{ object.tags_caso }}</h6>
+            <strong>
+                <small style="color:blue;">Caso do: {{ object.direito_caso }}</small> | 
+                <small style="color:rgb(24, 156, 24);">Matéria / Semestre: {{ object.materia_caso }}</small> |
+                <small>{{ object.title_caso }}</small>
+                <small>
+                    <p style="font-size:12px; margin-top:5px;">
+                        <strong>Resposta </strong>:  {{ object.author.first_name }} {{ object.author.last_name }}
+                    </p>
+                </small>           
+           </strong>
+            <br><br>
+            <a href="{% url 'casos-list' %}" class="btn btn-outline-secondary btn-lg px-4"> <small>Go back in Casos list</small></a>
+            <a href="{% url 'home' %}" class="btn btn-outline-secondary btn-lg px-4"> <small>Go back Home</small></a>
+        </div>
+    {% else %}
+        <div class="jumbotron jumbotron-fluid" style="background-color: rgb(240, 240, 240);">
+            <div class="container">
+                <br>
+                <h2 style="text-transform: uppercase">{{ object.title_caso }}</h2>
+                <hr>
+                <small>
+                    <span class="badge" style="color:white; font-size:14px; font-family:Calibri; background-color: rgb(19, 19, 66);">
+                        {{ object.direito_caso }}
+                    </span>
+                    Data: <small>{{ object.data }}</small><br>
+                    <img src="{{ object.img_caso.url }}" style="width:300px; margin-top:5px;" class="card-img-top" alt="Hello X'ss"/><br>
+                </small>
+                <br>
+            </div>
+        </div>
+        <br>
+        <div class="container">
+            Materia | semestre:
+            <strong>
+                <a style="color:rgb(21, 143, 42); font-size:16px; font-family:Calibri;  margin-top: 5px;">{{ object.materia_caso }}</a>
+                <a style="color:rgb(18, 19, 18); font-size:16px; font-family:Calibri;  margin-top: 5px;">{{ object.title_caso }}</a>
+                <br><br>
+            </strong>
+            <small style="font-size:19px; font-family:Calibri; text-align:justify">{{ object.content_caso | safe }}</small>
+            <br>
+            <h3 style="margin-top: 20px;">Legislação pertinente</h3>
+            <small style="font-family:Calibri; font-size: 19px; text-align:justify;">{{ object.lei_caso | safe }}</small>
+            <br>
+            <h3 style="margin-top: 20px;">Jurisprudência</h3>
+            <small style="font-family:Calibri; font-size: 19px; text-align:justify;">{{ object.jurisprudencia_caso | safe }}</small>
+            <br>
+            <small><strong>Obrigado pela Leitura! .MR</strong></small><br>
+            <br>
+            <hr>
+            <h6><strong>Tags</strong> | {{ object.tags_caso }}</h6>
+            <strong>
+                <small style="color:blue;">Caso do: {{ object.direito_caso }}</small> | 
+                <small style="color:rgb(24, 156, 24);">Matéria / Semestre: {{ object.materia_caso }}</small> |
+                <small>{{ object.title_caso }}</small>
+                <small>
+                    <p style="font-size:12px; margin-top:5px;">
+                        <strong>Resposta </strong>:  {{ object.author.first_name }} {{ object.author.last_name }}
+                    </p>
+                </small>           
+        </strong>
+            <br><br>
+            <a href="{% url 'casos-list' %}" class="btn btn-outline-secondary btn-lg px-4"> <small>Go back in Casos list</small></a>
+            <a href="{% url 'home' %}" class="btn btn-outline-secondary btn-lg px-4"> <small>Go back Home</small></a>
+        </div>
+    {% endif %}
+    <br><br>
+{% endblock %}

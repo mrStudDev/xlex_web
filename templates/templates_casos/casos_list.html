@@ -1,0 +1,116 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    Xlex | Casos
+{% endblock %}
+
+
+{% block casos %}
+    <div class="jumbotron jumbotron-fluid" style="background-color: rgb(240, 240, 240);">
+        <div class="container"><br>
+            <h1  class="display-4" style="text-transform: uppercase;">CASOS</h1>
+            <small>| XLEX - Casos Concretos, Matéria, Ramo do Direito...</small>
+        </div><br>
+    </div><br>
+    <div class="container">
+        <div class="row g-0" style="margin-top:1px">
+            <div class="col-sm-6 col-md-8">
+                <div class="container-post">
+                    {% for caso in object_list %}
+                        <div class="card mb-3" style="max-width: 100%; padding: 0px;">
+                            <div class="row g-0">
+                                <div class="col-md-4">
+                                    <img src="{{ caso.img_caso.url }}" class="img-fluid rounded-start" alt="{% url 'post-single' caso.pk %}">
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="card-body">
+                                        <h6 class="card-title" style="text-transform: uppercase;">
+                                            <a href="{% url 'caso-single' caso.pk %}" style=" color:black">
+                                                {{ caso.title_caso | slice:":51" }}
+                                            </a>
+                                        </h6>
+                                        <small class="card-text" style="margin-top:10px;">{{ caso.meta_caso | safe | slice:":130" }}</small><br>
+                                        <span class="badge" style="color:white; font-size:12px; font-family:Calibri; margin-top: 10px; background-color: rgb(22, 12, 66);">
+                                            <a href="{% url 'direito-caso' caso.direito_caso %}" style="color:white; font-size:14px; font-family:Calibri; text-decoration: none; margin-top:5px;">
+                                                {{ caso.direito_caso }}
+                                            </a>
+                                        </span>
+                                        <br>
+                                        <small>Matéria/Semestre: </small>
+                                            <strong>
+                                                <a href="{% url 'materia-caso' caso.materia_caso %}" style="color:rgb(20, 155, 38); font-size:14px; font-family:Calibri; margin-top:10px;">
+                                                    {{ caso.materia_caso }}
+                                                </a>
+                                            </strong>
+                                        </a><br>
+                                        <div style="margin-top:5px;">
+                                            <small style="font-size:12px;"><strong> | In:</strong> {{ caso.data }}</small>
+                                            <small style="font-size:12px;"> <strong> | By:</strong> {{ caso.author.first_name }} {{ caso.author.last_name }}</small>
+                                            <center style="margin-top: 5px;">
+                                                <a href="{% url 'caso-single' caso.pk %}">
+                                                    <small>Veja o Caso Concreto</small>
+                                                </a>
+                                            </center>                                                 
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>                            
+                    {% endfor %}    
+                </div>    
+            </div>
+            <div class="col-6 col-md-4">
+                <div class="col-md-10 mx-auto col-lg-12">
+                    <form class="p-4 p-md-5 border rounded-3">
+                        <h4>Subscribe</h4><hr>
+                        <div class="form-floating mb-3">
+                            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+                            <label for="floatingInput">Email address</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+                            <label for="floatingPassword">Password</label>
+                        </div>
+                        <div class="checkbox mb-3">
+                            <label>
+                                <input type="checkbox" value="remember-me"> Remember me
+                            </label>
+                        </div>
+                        <button class="w-100 btn btn-outline-secondary" type="submit" style="background-color: rgb(19, 19, 66);">Sign up</button>
+                        <hr class="my-4">
+                        <small class="text-muted">By clicking Sign up, you agree to the terms of use.</small>
+                    </form>
+                </div>
+                <br>
+                <div class="col-md-10 mx-auto col-lg-12">
+                    <form class="p-4 p-md-5 border rounded-3">
+                        <div class="form-floating mb-3">
+                            {% block direito_caso_list %}
+                            <h4>Categoria | Direito</h4><hr>
+                                <div class="container">
+                                    {% for item in cat_menu_direito_caso %}
+                                    <span class="badge" style="color:white; font-size:12px; font-family:Calibri; background-color: rgb(19, 19, 66); margin-top:5px;">
+                                        <a style="color:white; font-size:14px; font-family:Calibri; text-decoration: none;" href="{% url 'direito-caso' item %}">
+                                            {{item}} 
+                                        </a>
+                                    </span>
+                                    {% endfor%}
+                                </div>
+                            {% endblock %}                                
+                        </div>
+                        <hr class="my-4">
+                        <small class="text-muted">By clicking Sign up, you agree to the terms of use.</small>
+                    </form>
+                    <br><br>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <br>
+    <center>
+        <a href="{% url 'home' %}" class="btn btn-outline-secondary btn-lg px-4"> <small>Go back Home</small></a>
+        <br/><br/>
+    </center>
+{% endblock %}

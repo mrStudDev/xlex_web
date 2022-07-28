@@ -1,0 +1,110 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    Xlex | Posts
+{% endblock %}
+
+
+{% block posts %}
+    <div class="jumbotron jumbotron-fluid" style="background-color: rgb(240, 240, 240);">
+        <div class="container"><br>
+            <h1  class="display-4" style="text-transform: uppercase;">POSTS</h1>
+            <small>| XLEX - News, Crypto, Blog, Nft's...</small>
+        </div><br>
+    </div><br>
+    <div class="container">
+        <div class="row g-0" style="margin-top:1px">
+            <div class="col-sm-6 col-md-8">
+                <div class="container-post">
+                    {% for post in object_list %}
+                        <div class="card mb-3" style="max-width: 100%; padding: 0px;">
+                            <div class="row g-0">
+                                <div class="col-md-4">
+                                    <img src="{{ post.img_destaque.url }}" class="img-fluid rounded-start" alt="{% url 'post-single' post.pk %}">
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="card-body">
+                                        <h6 class="card-title" style="text-transform: uppercase;">
+                                            <a href="{% url 'post-single' post.pk %}">
+                                                {{ post.title | slice:":71" }}
+                                            </a>
+                                        </h6>
+                                        <span class="badge" style="color:white; font-size:12px; font-family:Calibri; margin-top: 5px; background-color:rgb(19, 19, 66);">
+                                            <a href="{% url 'category' post.category %}" style="color:white; font-size:14px; font-family:Calibri; text-decoration: none; margin-top:5px;">
+                                                {{ post.category }}
+                                            </a>
+                                        </span><br>
+                                        <small class="card-text" style="margin-top:10px;">
+                                            {{ post.meta_description | safe | slice:":130" }}
+                                        </small>
+                                        <div style="margin-top:5px;">
+                                            <small style="font-size:10px;"><strong> | In:</strong> {{ post.data }}</small>
+                                            <small style="font-size:10px;"> <strong> | By:</strong> {{ post.author.first_name }} {{ post.author.last_name }}</small>
+                                            <center style="margin-top: 5px;">
+                                                <a href="{% url 'post-single' post.pk %}">
+                                                    <small>Leia mais</small>
+                                                </a>
+                                            </center>                                                 
+                                        </div>      
+                                    </div>
+                                </div>
+                            </div>
+                        </div>                            
+                    {% endfor %}    
+                </div>    
+            </div>
+            <div class="col-6 col-md-4">
+                <div class="col-md-10 mx-auto col-lg-12">
+                    <form class="p-4 p-md-5 border rounded-3">
+                        <h4>Subscribe</h4><hr>
+                        <div class="form-floating mb-3">
+                            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+                            <label for="floatingInput">Email address</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+                            <label for="floatingPassword">Password</label>
+                        </div>
+                        <div class="checkbox mb-3">
+                            <label>
+                                <input type="checkbox" value="remember-me"> Remember me
+                            </label>
+                        </div>
+                        <button class="w-100 btn btn-outline-secondary" type="submit" style="background-color: rgb(19, 19, 66);">Sign up</button>
+                        <hr class="my-4">
+                        <small class="text-muted">By clicking Sign up, you agree to the terms of use.</small>
+                    </form>
+                </div>
+                <br>
+                <div class="col-md-10 mx-auto col-lg-12">
+                    <form class="p-4 p-md-5 border rounded-3">
+                        <div class="form-floating mb-3">
+                            {% block category_list %}
+                            <h4>Categories</h4><hr>
+                                <div class="container">
+                                    {% for item in cat_menu %}
+                                    <span class="badge" style="color:white; font-size:12px; font-family:Calibri; margin-top: 5px; background-color: rgb(19, 19, 66);">
+                                        <a style="color:white; font-size:14px; font-family:Calibri; text-decoration: none;" href="{% url 'category' item %}">
+                                            {{item}} 
+                                        </a>
+                                    </span>
+                                    {% endfor%}
+                                </div>
+                            {% endblock %}                                
+                        </div>
+                        <hr class="my-4">
+                        <small class="text-muted">By clicking Sign up, you agree to the terms of use.</small>
+                    </form>
+                    <br><br>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <br>
+    <center>
+        <a href="{% url 'home' %}" class="btn btn-outline-secondary btn-lg px-4"> <small>Go back Home</small></a>
+        <br/><br/>
+    </center>
+{% endblock %}

@@ -1,0 +1,111 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}{{ object.title_caso }} {% endblock %}
+
+
+{% block questions %}
+    {% if user.is_authenticated %}
+        <div class="jumbotron jumbotron-fluid" style="background-color: rgb(240, 240, 240);">
+            <div class="container">
+                <br>
+                <h2 style="text-transform: uppercase">{{ object.title_question }}</h2>
+                <hr>
+                <small style="font-size:15px; font-family:Calibri;">
+                    <strong>Matéria: </strong>
+                    <strong style="color: red;">{{ object.materia_question }}</strong> | 
+                    <strong>Banca: </strong>
+                    <strong style="color: green">{{ object.banca_question }}</strong> | 
+                    <strong>Data: </strong>
+                    <strong style="color: black">{{ object.data }}</strong> 
+                </small>
+                <br><br>
+                <a href="{% url 'update-question' object.pk %}">(Edit Question)</a>
+                <a href="{% url 'delete-question' object.pk %}"> | (Delete Question)</a><br><br>
+            </div>
+        </div>
+        <br>
+        <div class="container" style="width: 90%;">
+            Materia | Question:
+            <strong>
+                <a style="color:rgb(21, 143, 42); font-size:16px; font-family:Calibri;  margin-top: 5px;">{{ object.materia_question }}</a> |
+                <a style="color:rgb(18, 19, 18); font-size:16px; font-family:Calibri;  margin-top: 5px;">{{ object.title_question }}</a>
+                <br><br>
+            </strong>
+            <div class="card" style="border-radius:10px;">
+                <div class="container" style="margin-left: 2%; margin-right:2%; margin-top:2%; width:96%;">
+                    Question: <a style="color:rgb(18, 19, 18); font-size:16px; font-family:Calibri; margin-top: 5px;"><strong> {{ object.title_question }}</strong></a>
+                    <br><br>
+                    <small style="font-size:19px; font-family:Calibri; text-align:justify">{{ object.question_ask | safe }}</small>
+                    <br>
+                    <small style="font-size:19px; font-family:Calibri; text-align:justify"><strong>A)</strong> {{ object.alternativa_a | safe }}</small>
+                    <br><br>
+                    <small style="font-size:19px; font-family:Calibri; text-align:justify"><strong>B)</strong>{{ object.alternativa_b | safe }}</small>
+                    <br><br>
+                    <small style="font-size:19px; font-family:Calibri; text-align:justify"><strong>C)</strong>{{ object.alternativa_c | safe }}</small>
+                    <br><br>
+                    <small style="font-size:19px; font-family:Calibri; text-align:justify"><strong>D)</strong>{{ object.alternativa_d | safe }}</small>
+                    <br><br>
+                    <small style="font-size:19px; font-family:Calibri; text-align:justify"><strong>E)</strong>{{ object.alternativa_e | safe }}</small>
+                    <br><br>                                   
+                </div><a href="{% url 'resposta-question' question.pk %}" class="btn btn-outline-secondary btn-lg px-4;" style="background-color: rgb(79, 242, 79); color:white"> <small>Revelar resposta</small></a>              
+            </div>
+           
+            </strong>
+            <br><br>
+            <a href="{% url 'questions-list' %}" class="btn btn-outline-secondary btn-lg px-4"> <small>Go back in Questions list</small></a>
+            <a href="{% url 'home' %}" class="btn btn-outline-secondary btn-lg px-4"> <small>Go back Home</small></a>
+            </div>
+        </div>
+
+
+    {% else %}
+        <div class="jumbotron jumbotron-fluid" style="background-color: rgb(240, 240, 240);">
+            <div class="container">
+                <br>
+                <h2 style="text-transform: uppercase">{{ object.title_question }}</h2>
+                <hr>
+                <small>
+                    <span class="badge" style="color:white; font-size:14px; font-family:Calibri; background-color: rgb(19, 19, 66);">
+                        {{ object.materia_question }}
+                    </span>
+                    Data: <small>{{ object.data }}</small><br>
+                </small>
+                <br>
+            </div>
+        </div>
+        <br>
+        <div class="container" style="width: 90%;">
+            Materia | Question:
+            <strong>
+                <a style="color:rgb(21, 143, 42); font-size:16px; font-family:Calibri;  margin-top: 5px;">{{ object.materia_question }}</a> |
+                <a style="color:rgb(18, 19, 18); font-size:16px; font-family:Calibri;  margin-top: 5px;">{{ object.title_question }}</a>
+                <br><br>
+            </strong>
+            <div class="card" style="border-radius:10px;">
+                <div class="container" style="margin-left: 2%; margin-right:2%; margin-top:2%; width:96%;">
+                    Question: <a style="color:rgb(18, 19, 18); font-size:16px; font-family:Calibri; margin-top: 5px;"><strong> {{ object.title_question }}</strong></a>
+                    <br><br>
+                    <small style="font-size:19px; font-family:Calibri; text-align:justify">{{ object.question_ask | safe }}</small>
+                    <br>
+                    <small style="font-size:19px; font-family:Calibri; text-align:justify"><strong>A)</strong> {{ object.alternativa_a | safe }}</small>
+                    <br><br>
+                    <small style="font-size:19px; font-family:Calibri; text-align:justify"><strong>B)</strong>{{ object.alternativa_b | safe }}</small>
+                    <br><br>
+                    <small style="font-size:19px; font-family:Calibri; text-align:justify"><strong>C)</strong>{{ object.alternativa_c | safe }}</small>
+                    <br><br>
+                    <small style="font-size:19px; font-family:Calibri; text-align:justify"><strong>D)</strong>{{ object.alternativa_d | safe }}</small>
+                    <br><br>
+                    <small style="font-size:19px; font-family:Calibri; text-align:justify"><strong>E)</strong>{{ object.alternativa_e | safe }}</small>
+                    <br><br>                                   
+                </div><a href="{% url 'resposta-question' question.pk %}" class="btn btn-outline-secondary btn-lg px-4;" style="background-color: rgb(79, 242, 79); color:white"> <small>Revelar resposta</small></a>              
+            </div>
+           
+            </strong>
+            <br><br>
+            <a href="{% url 'questions-list' %}" class="btn btn-outline-secondary btn-lg px-4"> <small>Go back in Questions list</small></a>
+            <a href="{% url 'home' %}" class="btn btn-outline-secondary btn-lg px-4"> <small>Go back Home</small></a>
+            </div>
+        </div>
+    {% endif %}
+    <br><br>
+{% endblock %}

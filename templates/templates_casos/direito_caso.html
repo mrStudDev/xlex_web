@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+
+
+{% block casos %}
+    <div class="jumbotron jumbotron-fluid" style="background-color: rgb(240, 240, 240);">
+        <div class="container"><br>
+            {% if direito_caso_casos %}
+            <h3 style="text-transform: uppercase">Ramo | {{ cats }}</h3><br>
+        </div>
+    </div>
+    <div class="container">
+        <div class="col-sm-6 col-md-8" style="margin-top:10px;">
+            <div class="container-category-list">
+                {% for caso in direito_caso_casos %}
+                    <div class="card mb-3" style="max-width: 100%; padding: 0px;">
+                        <div class="row g-0">
+                            <div class="col-md-4">
+                                <img src="{{ caso.img_caso.url }}" class="img-fluid rounded-start" alt="{{ post.img_destaque.url }}"/>
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <h6 class="card-title" style="text-transform: uppercase;"><a href="{% url 'caso-single' caso.pk %}">
+                                        {{ caso.title_caso | slice:":71" }}
+                                        </a>
+                                    </h6>
+                                    <small class="card-text" style="margin-top:10px;">{{ caso.meta_caso | safe | slice:":130" }}</small><br>
+                                    <span class="badge" style="color:white; font-size:12px; font-family:Calibri;  margin-top: 5px; background-color: rgb(19, 19, 66);">
+                                        <a href="{% url 'direito-caso' caso.direito_caso %}" style="color:white; font-size:14px; font-family:Calibri; text-decoration: none; margin-top:5px;">
+                                            {{ caso.direito_caso }}
+                                        </a>
+                                    </span>
+                                    <small> | Matéria/Semestre: </small>
+                                    <strong>
+                                        <a href="{% url 'materia-caso' caso.materia_caso %}" style="color:rgb(20, 155, 38); font-size:14px; font-family:Calibri; margin-top:10px;">
+                                            {{ caso.materia_caso }}
+                                        </a>
+                                    </strong>
+                                    <br>
+                                    <div style="margin-top:5px;">
+                                        <small style="font-size:10px;"><strong> | In:</strong> {{ caso.data }}</small>
+                                        <small style="font-size:10px;"> <strong> | By:</strong> {{ caso.author.first_name }} {{ caso.author.last_name }}</small>
+                                        <center style="margin-top:5px;">
+                                            <a href="{% url 'caso-single' caso.pk %}">
+                                                <small>Leia mais</small>
+                                            </a>
+                                        </center>                                                 
+                                    </div>                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>                            
+                {% endfor %}    
+            </div>    
+        </div>
+    </div>
+    <center>
+        <a href="{% url 'casos-list' %}" class="btn btn-outline-secondary btn-lg px-4"> <small>Go back in Casos list</small></a>
+        <a href="{% url 'home' %}" class="btn btn-outline-secondary btn-lg px-4"> <small>Go back Home</small></a>
+        <br/><br/>
+    </center>
+        {% else %}
+            <div class="container-fluid">
+                <div class="container">
+                    <h2>Sorry! This category law page does not exist!!!</h2>
+                    <a href="{% url 'casos-list' %}" class="btn btn-outline-secondary btn-lg px-4"><small>Go back in Casos list</small></a>
+                    <a href="{% url 'home' %}" class="btn btn-outline-secondary btn-lg px-4"><small>Go back Home</small></a>
+                    <br/><br/>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}

@@ -1,0 +1,124 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    Xlex | Questions
+{% endblock %}
+
+
+{% block questions %}
+    <div class="jumbotron jumbotron-fluid" style="background-color: rgb(240, 240, 240);">
+        <div class="container"><br>
+            <h1  class="display-4" style="text-transform: uppercase;">QUESTIONS</h1>
+            <small>| XLEX - Casos Concretos, Matéria, Ramo do Direito...</small>
+        </div><br>
+    </div><br>
+    <div class="container">
+        <div class="row g-0" style="margin-top:1px">
+            <div class="col-sm-6 col-md-8">
+                <div class="container-post">
+                    {% for question in object_list %}
+                        <div class="card mb-3" style="max-width: 100%; padding: 0px;">
+                            <div class="row g-0">
+                                <div class="col-md-12">
+                                    <div class="card-body">
+                                        <h6 class="card-title" style="text-transform: uppercase;">
+                                            <a href="{% url 'question-single' question.pk %}" style=" color:black">
+                                                {{ question.title_question | slice:":71" }}
+                                            </a>
+                                        </h6>
+                                        <small class="card-text" style="margin-top:15px;">{{ question.meta_question | safe | slice:":150" }}...</small><br>
+                                        <small>
+                                            <strong>Matéria:
+                                                <a href="{% url 'materia-question' question.materia_question %}" style="color:rgb(255, 0, 0); font-size:15px; font-family:Calibri; margin-top:5px;">
+                                                    {{ question.materia_question }} 
+                                                </a> | 
+                                            </strong>
+                                            <strong>Banca:
+                                                <a href="{% url 'banca-question' question.banca_question %}" style="color:rgb(20, 155, 38); font-size:14px; font-family:Calibri; margin-top:10px;">
+                                                    {{ question.banca_question }}
+                                                </a>
+                                            </strong> 
+                                        </small>
+                                        <div style="margin-top:5px;">
+                                            <small style="font-size:12px;"><strong> | In:</strong> {{ question.data }}</small>
+                                            <small style="font-size:12px;"> <strong> | By:</strong> {{ question.author.first_name }} {{ question.author.last_name }}</small>
+                                            <center style="margin-top: 5px;">
+                                                <a href="{% url 'question-single' question.pk %}">
+                                                    <small>Veja a Questão</small>
+                                                </a>
+                                            </center>                                                 
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>                            
+                    {% endfor %}    
+                </div>    
+            </div>
+            <div class="col-6 col-md-4">
+                <div class="col-md-10 mx-auto col-lg-12">
+                    <form class="p-4 p-md-5 border rounded-3">
+                        <h4>Subscribe</h4><hr>
+                        <div class="form-floating mb-3">
+                            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+                            <label for="floatingInput">Email address</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+                            <label for="floatingPassword">Password</label>
+                        </div>
+                        <div class="checkbox mb-3">
+                            <label>
+                                <input type="checkbox" value="remember-me"> Remember me
+                            </label>
+                        </div>
+                        <button class="w-100 btn btn-outline-secondary" type="submit" style="background-color: rgb(19, 19, 66);">Sign up</button>
+                        <hr class="my-4">
+                        <small class="text-muted">By clicking Sign up, you agree to the terms of use.</small>
+                    </form>
+                </div>
+                <br>
+                <div class="col-md-10 mx-auto col-lg-12">
+                    <form class="p-4 p-md-5 border rounded-3">
+                        <div class="form-floating mb-3">
+                            {% block banca_question_list %}
+                            <h4>Bancas | Questions</h4><hr>
+                                <div class="container">
+                                    {% for item in cat_menu_banca_question %}
+                                    <span class="badge" style="color:white; font-size:12px; font-family:Calibri; background-color: rgb(5, 113, 30); margin-top:5px;">
+                                        <a style="color:white; font-size:14px; font-family:Calibri; text-decoration: none;" href="{% url 'banca-question' item %}">
+                                            {{item}} 
+                                        </a>
+                                    </span>
+                                    {% endfor%}
+                                </div>
+                            {% endblock %}
+                            <br>
+                            {% block materia_question %}
+                            <h4>Matérias | Questions</h4><hr>
+                                <div class="container">
+                                    {% for objs in cat_menu_materia_question %}
+                                    <span class="badge" style="color:white; font-size:12px; font-family:Calibri; background-color: rgb(5, 113, 30); margin-top:5px;">
+                                        <a style="color:white; font-size:14px; font-family:Calibri; text-decoration: none;" href="{% url 'materia-question' objs %}">
+                                            {{objs}} 
+                                        </a>
+                                    </span>
+                                    {% endfor%}
+                            {% endblock %}            
+                        </div><br><hr>
+                        <hr class="my-4">
+                        <small class="text-muted">By clicking Sign up, you agree to the terms of use.</small>
+                    </form>
+                    <br><br>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <br>
+    <center>
+        <a href="{% url 'home' %}" class="btn btn-outline-secondary btn-lg px-4"> <small>Go back Home</small></a>
+        <br/><br/>
+    </center>
+{% endblock %}

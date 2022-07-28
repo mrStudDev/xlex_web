@@ -1,0 +1,300 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block header_home %}
+  <div class="container-fluid" style="background: rgb(3, 4, 22); background: linear-gradient(90degrgb(5, 6, 29)1) 1%, rgba(11,9,70,1) 85%, rgb(7, 6, 29) 100%;"><br>
+    <div class="container">
+        <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+            <div class="col-10 col-sm-8 col-lg-6">
+                <img src="{% static '/images/man-1424877_640.png' %}" class="d-block mx-lg-auto img-fluid" alt="Bootstrap Themes" loading="lazy">
+            </div>
+            <div class="col-lg-6">
+                <h3 class="display-5 fw-bold lh-1 mb-3" style="color:rgb(251, 255, 2);">OLÁ, SEJAM BEM VINDES!</h3><hr style="color:rgb(251, 255, 2); height:2px; ">
+                <h1 class="display-5 fw-bold lh-1 mb-3" style="color: rgb(230, 228, 228);">Que bom ter você aqui com a gente!</h1>
+                <p class="lead" style="color: rgb(230, 228, 228);">Faça a sua inscrição e tenha acesso ao conteúdo Vip do Site. Além das questões, quizes, mapas mentais e casos concretos, você fará parte do nosso grupo dos X'S-VIP</p>
+                <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+                    <button type="button" class="btn btn-outline-secondary btn-lg px-4 me-md-2">Primary</button>
+                    <button type="button" class="btn btn-outline-secondary btn-lg px-4">Default</button>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+{% endblock %}
+
+
+{% block content %}
+<div class="container-fluid" style="background: rgb(3, 4, 22); background:linear-gradient(90degrgb(5, 6, 29)1) 1%, rgba(11,9,70,1) 85%, rgb(7, 6, 29) 100%">
+    <div class="container px-4 py-5" id="hanging-icons">
+        <h2 class="pb-2 border-bottom" style="color: rgb(230, 228, 228);">Nosso Conteúdo</h2>
+        <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
+          <div class="col d-flex align-items-start">
+            <div class="icon-square bg-light text-dark flex-shrink-0 me-3">
+              <svg class="bi" width="1em" height="1em"><use xlink:href="#toggles2"/></svg>
+            </div>
+            <div>
+              <h2 style="color: rgb(230, 228, 228);">Posts</h2>
+              <p style="color: rgb(230, 228, 228);">Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words.</p>
+              <a href="{% url 'posts-list'%}" class="btn btn-outline-secondary">
+                Ver Posts
+              </a>
+            </div>
+          </div>
+          <div class="col d-flex align-items-start">
+            <div class="icon-square bg-light text-dark flex-shrink-0 me-3">
+              <svg class="bi" width="1em" height="1em"><use xlink:href="#cpu-fill"/></svg>
+            </div>
+            <div>
+              <h2 style="color: rgb(230, 228, 228);">Jurisprudência</h2>
+              <p style="color: rgb(230, 228, 228);">Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words.</p>
+              <a href="#" class="btn btn-outline-secondary">
+                Ver Jurisprudências
+              </a>
+            </div>
+          </div>
+          <div class="col d-flex align-items-start">
+            <div class="icon-square bg-light text-dark flex-shrink-0 me-3">
+              <svg class="bi" width="1em" height="1em"><use xlink:href="#tools"/></svg>
+            </div>
+            <div>
+              <h2 style="color: rgb(230, 228, 228);">Casos Concretos</h2>
+              <p style="color: rgb(230, 228, 228);">Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words.</p>
+              <a href="{% url 'casos-list'%}" class="btn btn-outline-secondary">
+                Ver Casos
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
+            <div class="col d-flex align-items-start">
+              <div class="icon-square bg-light text-dark flex-shrink-0 me-3">
+                <svg class="bi" width="1em" height="1em"><use xlink:href="#toggles2"/></svg>
+              </div>
+              <div>
+                <h2 style="color: rgb(230, 228, 228);">Questões Objetivas</h2>
+                <p style="color: rgb(230, 228, 228);">Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words.</p>
+                <a href="#" class="btn btn-outline-secondary">
+                  Primary button
+                </a>
+              </div>
+            </div>
+            <div class="col d-flex align-items-start">
+              <div class="icon-square bg-light text-dark flex-shrink-0 me-3">
+                <svg class="bi" width="1em" height="1em"><use xlink:href="#cpu-fill"/></svg>
+              </div>
+              <div>
+                <h2 style="color: rgb(230, 228, 228);">Quix</h2>
+                <p style="color: rgb(230, 228, 228);">Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words.</p>
+                <a href="#" class="btn btn-outline-secondary">
+                  Primary button
+                </a>
+              </div>
+            </div>
+            <div class="col d-flex align-items-start">
+              <div class="icon-square bg-light text-dark flex-shrink-0 me-3">
+                <svg class="bi" width="1em" height="1em"><use xlink:href="#tools"/></svg>
+              </div>
+              <div>
+                <h2 style="color: rgb(230, 228, 228);">TCC - Modelos</h2>
+                <p style="color: rgb(230, 228, 228);">Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words.</p>
+                <a href="#" class="btn btn-outline-secondary">
+                  Primary button
+                </a>
+              </div>
+            </div>
+          </div>
+      </div>
+
+      <div class="container-fuid" style="margin-left: 2%; margin-right:2%">
+      <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"/></svg>
+            <img src="{% static '/images/artificial-intelligence-5291510_1920.jpg' %}" class="d-block mx-lg-auto img-fluid" alt="Bootstrap Themes" loading="lazy"> 
+            <div class="container">
+              <div class="carousel-caption text-start">
+                <h1>Example headline.</h1>
+                <p>Some representative placeholder content for the first slide of the carousel.</p>
+                <p><a class="btn btn-lg btn-primary" href="#">Sign up today</a></p>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"/></svg>
+            <img src="{% static '/images/company.jpg' %}" class="d-block mx-lg-auto img-fluid" alt="Bootstrap Themes" loading="lazy"> 
+            <div class="container">
+              <div class="carousel-caption">
+                <h1>Another example headline.</h1>
+                <p>Some representative placeholder content for the second slide of the carousel.</p>
+                <p><a class="btn btn-lg btn-primary" href="#">Learn more</a></p>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"/></svg>
+            <img src="{% static '/images/communication-4871245_1920.jpg' %}" class="d-block mx-lg-auto img-fluid" alt="Bootstrap Themes" loading="lazy"> 
+            <div class="container">
+              <div class="carousel-caption text-end">
+                <h1>One more for good measure.</h1>
+                <p>Some representative placeholder content for the third slide of this carousel.</p>
+                <p><a class="btn btn-lg btn-primary" href="#">Browse gallery</a></p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    </div>
+      <br><br>
+
+      <div class="container px-4 py-5" id="icon-grid">
+        <h2 class="pb-2 border-bottom" style="color: rgb(230, 228, 228);">Pesquisas</h2>
+    
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4 py-5">
+          <div class="col d-flex align-items-start">
+            <svg class="bi text-muted flex-shrink-0 me-3" width="1.75em" height="1.75em"><use xlink:href="#bootstrap"/></svg>
+            <div>
+              <h4 class="fw-bold mb-0" style="color: rgb(230, 228, 228);">Dados Abertos STJ</h4>
+              <p style="color: rgb(230, 228, 228);">Paragraph of text beneath the heading to explain the heading.</p>
+            </div>
+          </div>
+          <div class="col d-flex align-items-start">
+            <svg class="bi text-muted flex-shrink-0 me-3" width="1.75em" height="1.75em"><use xlink:href="#cpu-fill"/></svg>
+            <div>
+              <h4 class="fw-bold mb-0" style="color: rgb(230, 228, 228);">Demandas Repetitivas</h4>
+              <p style="color: rgb(230, 228, 228);">Paragraph of text beneath the heading to explain the heading.</p>
+            </div>
+          </div>
+          <div class="col d-flex align-items-start">
+            <svg class="bi text-muted flex-shrink-0 me-3" width="1.75em" height="1.75em"><use xlink:href="#calendar3"/></svg>
+            <div>
+              <h4 class="fw-bold mb-0" style="color: rgb(230, 228, 228);">Processo Colletivos - Trabalhista</h4>
+              <p style="color: rgb(230, 228, 228);">Paragraph of text beneath the heading to explain the heading.</p>
+            </div>
+          </div>
+          <div class="col d-flex align-items-start">
+            <svg class="bi text-muted flex-shrink-0 me-3" width="1.75em" height="1.75em"><use xlink:href="#home"/></svg>
+            <div>
+              <h4 class="fw-bold mb-0" style="color: rgb(230, 228, 228);">Gastos Judiciário 2022</h4>
+              <p style="color: rgb(230, 228, 228);">Paragraph of text beneath the heading to explain the heading.</p>
+            </div>
+          </div>
+          <div class="col d-flex align-items-start">
+            <svg class="bi text-muted flex-shrink-0 me-3" width="1.75em" height="1.75em"><use xlink:href="#speedometer2"/></svg>
+            <div>
+              <h4 class="fw-bold mb-0" style="color: rgb(230, 228, 228);">Casos de Maior Índice em 2021</h4>
+              <p style="color: rgb(230, 228, 228);">Paragraph of text beneath the heading to explain the heading.</p>
+            </div>
+          </div>
+          <div class="col d-flex align-items-start">
+            <svg class="bi text-muted flex-shrink-0 me-3" width="1.75em" height="1.75em"><use xlink:href="#toggles2"/></svg>
+            <div>
+              <h4 class="fw-bold mb-0" style="color: rgb(230, 228, 228);">Pesquisa</h4>
+              <p style="color: rgb(230, 228, 228);">Paragraph of text beneath the heading to explain the heading.</p>
+            </div>
+          </div>
+          <div class="col d-flex align-items-start">
+            <svg class="bi text-muted flex-shrink-0 me-3" width="1.75em" height="1.75em"><use xlink:href="#geo-fill"/></svg>
+            <div>
+              <h4 class="fw-bold mb-0" style="color: rgb(230, 228, 228);">Pesquisa</h4>
+              <p style="color: rgb(230, 228, 228);">Paragraph of text beneath the heading to explain the heading.</p>
+            </div>
+          </div>
+          <div class="col d-flex align-items-start">
+            <svg class="bi text-muted flex-shrink-0 me-3" width="1.75em" height="1.75em"><use xlink:href="#tools"/></svg>
+            <div>
+              <h4 class="fw-bold mb-0" style="color: rgb(230, 228, 228);">Pesquisa</h4>
+              <p style="color: rgb(230, 228, 228);">Paragraph of text beneath the heading to explain the heading.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+    </main>
+
+
+    <div class="container-fluid"><br>
+        <div class="container">
+            <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+                <div class="col-10 col-sm-8 col-lg-6">
+                    <img src="{% static '/images/mapa.png' %}" class="d-block mx-lg-auto img-fluid" alt="Bootstrap Themes" width="700" height="500" loading="lazy">
+                </div>
+                <div class="col-lg-6">
+                    <h1 class="display-5 fw-bold lh-1 mb-3" style="color: rgb(230, 228, 228);">Responsive left-aligned hero with image</h1>
+                    <p class="lead" style="color: rgb(230, 228, 228);">Quickly design and customize responsive mobile-first sites with Bootstrap, the world’s most popular front-end open source toolkit, featuring Sass variables and mixins, responsive grid system, extensive prebuilt components, and powerful JavaScript plugins.</p>
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+                        <button type="button" class="btn btn-primary btn-lg px-4 me-md-2">Primary</button>
+                        <button type="button" class="btn btn-outline-secondary btn-lg px-4">Default</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<br>
+
+
+    <div class="container">
+        <div class="row featurette">
+          <div class="col-md-7 order-md-2">
+            <h2 class="featurette-heading" style="color: rgb(230, 228, 228);">Oh yeah, it’s that good. <span class="text-muted">See for yourself.</span></h2>
+            <p class="lead" style="color: rgb(230, 228, 228);">Another featurette? Of course. More placeholder content here to give you an <br>
+                idea of how this layout would work with some actual real-world content in place.</p>
+          </div>
+          <div class="col-md-5 order-md-1">
+            <img src="{% static '/images/smiley-1914523_1920.png' %}" class="d-block mx-lg-auto img-fluid" alt="Bootstrap Themes" loading="lazy"> 
+          </div>
+        </div>
+        </div>
+        <br><br><br>
+
+    <div class="container-fluid">
+        <div class="row align-items-center g-lg-5 py-5">
+            <div class="col-lg-7 text-center text-lg-start">
+                <h1 class="display-4 fw-bold lh-1 mb-3" style="color: rgb(230, 228, 228);">Vertically centered hero sign-up form</h1>
+                <p class="col-lg-10 fs-4" style="color: rgb(230, 228, 228);">Below is an example form built entirely with Bootstrap’s form controls. Each required form group has a validation state that can be triggered by attempting to submit the form without completing it.</p>
+            </div>
+            <div class="col-md-10 mx-auto col-lg-5">
+                <form class="p-4 p-md-5 border rounded-3">
+                    <div class="form-floating mb-3">
+                        <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+                        <label for="floatingInput">Email address</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+                        <label for="floatingPassword">Password</label>
+                    </div>
+                    <div class="checkbox mb-3">
+                        <label>
+                            <input type="checkbox" value="remember-me"> Remember me
+                        </label>
+                    </div>
+                    <button class="w-100 btn btn-outline-secondary" type="submit" style="background-color: rgb(19, 19, 66);">Sign up</button>
+                    <hr class="my-4">
+                    <small class="text-muted">By clicking Sign up, you agree to the terms of use.</small>
+                </form>
+            </div>
+        </div>
+    </div>
+    </div>
+</div>
+{% endblock %}
+
+
+
+<!---->
+
+<!---->
+<!---->
+<!---->

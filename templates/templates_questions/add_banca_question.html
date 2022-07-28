@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title %} Create New Direito Caso Category {% endblock %}
+
+{% block questions %}
+    {% if user.is_authenticated %}
+        <div class="container">
+            <h1>Add Banca Question</h1><br/><br/>
+            <div class="mb-3">
+                <form method="POST">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button class="btn btn-success">Banca question</button>
+                </form>
+            </div>
+
+            <a href="{% url 'questions-list' %}" class="btn btn-outline-secondary btn-lg px-4"> <small>Go back in Questions list</small></a>
+            <a href="{% url 'home' %}" class="btn btn-outline-success btn-lg px-4"><small>Go back Home</small></a>
+            <br/><br/>
+        </div>
+    {% else %}
+        <div class="jumbotron jumbotron-fluid">
+            <div class="container">
+                <p style="color:red">You're not allowed here! (Post is only for admin)</p>
+                <h1>============</h1>
+                <a href="{% url 'home' %}" class="btn btn-outline-secondary btn-lg px-4"> <small>Go back Home</small></a>
+                <br/><br/>
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}
+

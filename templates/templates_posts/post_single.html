@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ object.title }} {% endblock %}
+
+
+{% block posts %}
+    {% if user.is_authenticated %}
+        <div class="jumbotron jumbotron-fluid" style="background-color: rgb(240, 240, 240);">
+            <div class="container">
+                <br>
+                <h2 style="text-transform: uppercase">{{ object.title }}</h2>
+                <hr>
+                <small>
+                    <span class="badge" style="color:white; font-size:12px; font-family:Calibri; background-color: rgb(19, 19, 66);">
+                        {{ object.category }}
+                    </span> | 
+                    <small>{{ object.data }}</small><br>
+                    <img src="{{ object.img_destaque.url }}" style="width:300px; margin-top:5px;" class="card-img-top" alt="Hello X'ss"/><br><br>
+                    <a href="{% url 'update_post' object.pk %}">(Edit Post)</a>
+                    <a href="{% url 'delete_post' object.pk %}"> - (Delete Post)</a><br>
+                </small>
+                <br>
+            </div>
+        </div>
+        <div class="container" style="margin-top: 5px;">
+            <small style="color:rgb(36, 17, 141); font-size:12px; font-family:Calibri;">
+                {{ object.category }}
+                <strong><a style="color: black;"> | {{ object.title }}</a></strong>                
+            </small><br><br><br>
+            <small style="font-size:19px; font-family:Calibri; text-align:justify">
+                {{ object.content | safe }}
+            </small>
+            <br>
+            <small><strong>Obrigado pela Leitura! .MR</strong></small><br>
+            <br>
+            <hr>
+                <h6><strong>Tags</strong> | {{ object.tags }}</h6>
+                <small>
+                    <strong>
+                        <a style="font-size:12px; margin-top:5px;">
+                            Author:  {{ object.author.first_name }} {{ object.author.last_name }}
+                        </a>
+                        <a style="color:rgb(36, 17, 141);"> | {{ object.category }}</a>
+                        <a > | {{ object.title }}</a>
+                    </strong>
+                </small><br><br><br>
+                <a href="{% url 'posts-list' %}" class="btn btn-outline-secondary btn-lg px-4"> <small>Go back in Posts list</small></a>
+                <a href="{% url 'home' %}" class="btn btn-outline-secondary btn-lg px-4"> <small>Go back Home</small></a>
+        </div>
+    {% else %}
+        <div class="jumbotron jumbotron-fluid" style="background-color: rgb(240, 240, 240);">
+            <div class="container">
+                <br>
+                <h2 style="text-transform: uppercase">{{ object.title }}</h2>
+                <hr>
+                <small>
+                    <span class="badge" style="color:white; font-size:12px; font-family:Calibri; background-color: rgb(19, 19, 66);">
+                        {{ object.category }}
+                    </span> | 
+                    <small>{{ object.data }}</small><br>
+                    <img src="{{ object.img_destaque.url }}" style="width:300px; margin-top:5px;" class="card-img-top" alt="Hello X'ss"/><br><br>
+                </small>
+                <br>
+            </div>
+        </div>
+        <div class="container" style="margin-top: 5px;">
+            <small style="color:rgb(36, 17, 141); font-size:12px; font-family:Calibri;">
+                {{ object.category }}
+                <strong><a style="color: black;"> | {{ object.title }}</a></strong>                
+            </small><br><br><br>
+            <small style="font-size:19px; font-family:Calibri; text-align:justify">
+                {{ object.content | safe }}
+            </small>
+            <br>
+            <small><strong>Obrigado pela Leitura! .MR</strong></small><br>
+            <br>
+            <hr>
+                <h6><strong>Tags</strong> | {{ object.tags }}</h6>
+                <small>
+                    <strong>
+                        <a style="font-size:12px; margin-top:5px;">
+                            Author:  {{ object.author.first_name }} {{ object.author.last_name }}
+                        </a>
+                        <a style="color:rgb(36, 17, 141);"> | {{ object.category }}</a>
+                        <a > | {{ object.title }}</a>
+                    </strong>
+                </small><br><br><br>
+                <a href="{% url 'posts-list' %}" class="btn btn-outline-secondary btn-lg px-4"> <small>Go back in Posts list</small></a>
+                <a href="{% url 'home' %}" class="btn btn-outline-secondary btn-lg px-4"> <small>Go back Home</small></a>
+        </div>
+    {% endif %}
+    <br><br>
+{% endblock %}

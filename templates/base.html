@@ -1,0 +1,238 @@
+{% load static %}
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="{% static '/static/css/style.css' %}">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    </head>     
+    <title>
+    {% block title %}
+        Xlex | Home
+    {% endblock %}
+    </title>
+    <nav class="navbar navbar-expand-lg" id="mynav">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="{% url 'home'%}">XLEX</a>
+            <button style="background-color:rgb(3, 3, 36); color:white;" class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon">=</span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="{% url 'home'%}">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'posts-list'%}">Posts</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="{% url 'casos-list'%}">Casos</a>
+                  </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'questions-list'%}">Questions</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Dropdown link
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Action</a></li>
+                            <li><a class="dropdown-item" href="#">Another action</a></li>
+                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <ul class="nav justify-content-end">
+              <li class="nav-item">
+                <a href="{% url 'login'%}" style="float:right; color: rgb(16, 13, 53);">Admin</a>
+              </li>
+            </ul>
+        </div>
+      </nav>
+      {% if user.is_authenticated %}
+      <nav class="navbar navbar-expand-lg bg-dark" style="height:25px;">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#" style="font-size: 12px; color:rgb(168, 166, 166)">Admin</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+              <a class="nav-link active" aria-current="page" href="{% url 'add_post'%}" style="font-size:12px; color:rgb(1, 250, 250);">Add Post</a>
+              <a class="nav-link" href="{% url 'add_category'%}" style="font-size:12px; color:rgb(58, 219, 219);">Add Category</a>
+              <a class="nav-link" href="{% url 'add_casos' %}" style="font-size: 12px; color:rgb(8, 74, 255);">Add Casos</a>
+              <a class="nav-link" href="{% url 'add_direito_caso' %}" style="font-size: 12px; color:rgb(8, 74, 255);">Add Dto_Casos</a>
+              <a class="nav-link" href="{% url 'add_materia_caso' %}" style="font-size: 12px; color:rgb(8, 74, 255);">Add Mat_Casos</a>
+              <a class="nav-link" href="{% url 'add_questions' %}" style="font-size: 12px; color: rgb(255, 63, 255);">Add Questions</a>
+              <a class="nav-link" href="{% url 'add_materia_question' %}" style="font-size: 12px; color: rgb(255, 63, 255);">Add Mat_Questions</a>
+              <a class="nav-link" href="{% url 'add_banca_question' %}" style="font-size: 12px; color: rgb(255, 63, 255);">Add Banca_Questions</a>
+
+            </div>
+            <a href="{% url 'logout'%}" style="float:right; color:rgb(14, 180, 14); font-size: 12px;"> | Logout >>></a>
+          </div>
+        </div>
+      </nav>
+      {% else %}
+      <!-- LOGIN E REGISTRO
+           <span class="navbar-text" style="color: blue;">
+              <small>
+                  <a href="{% url 'register'%}" style="float:right; color: rgb(0, 0, 0);">Register |</a>
+                  <a href="{% url 'login'%}" style="float:right; color: rgb(0, 0, 0);"> | Login</a>
+              </small>
+          </span>           
+      --> 
+      </nav>   
+  {% endif %}
+
+    <!-- Fim NAVBAR-->
+
+
+    <!-- Blocks VALIDATION-->
+    {% block login %}
+    {% endblock %}
+    {% block register %}
+    {% endblock %}
+    <!-- Fim Validation-->
+
+<!-- Blocks BODY-->
+<body>
+    <!-- Blocks Components Home-->
+        {% block header_home %}
+
+        {% endblock %}
+        {% block content %}
+
+        {% endblock %}
+
+        <!--Subscribe-->
+        {% block subscribe %}
+
+        {% endblock %}
+
+        <!-- Post List-->
+        {% block posts %}
+
+        {% endblock %}  
+
+        <!-- Casos List--> 
+
+        {% block casos %}
+
+        {% endblock %}
+
+        {% block questions %}
+
+        {% endblock %}
+
+
+        {% block blog %}
+
+        {% endblock %}
+
+        <!-- Class Footer --> 
+        {% block footer %}
+
+        {% endblock %}
+
+
+      <div class="container-fluid" style="background: rgb(3, 4, 22); background: linear-gradient(90degrgb(5, 6, 29)1) 1%, rgba(11,9,70,1) 85%, rgb(7, 6, 29) 100%;">
+        <div class="container px-4 py-5" id="icon-grid">
+            <h2 class="pb-2 border-bottom" style="color: rgb(230, 228, 228);">XLEX</h2>
+        
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4 py-5">
+              <div class="col d-flex align-items-start">
+                <svg class="bi text-muted flex-shrink-0 me-3" width="1.75em" height="1.75em"><use xlink:href="#bootstrap"/></svg>
+                <div>
+                  <h4 class="fw-bold mb-0" style="color: rgb(230, 228, 228);">Featured title</h4>
+                  <p style="color: rgb(230, 228, 228);">Paragraph of text beneath the heading to explain the heading.</p>
+                </div>
+              </div>
+              <div class="col d-flex align-items-start">
+                <svg class="bi text-muted flex-shrink-0 me-3" width="1.75em" height="1.75em"><use xlink:href="#cpu-fill"/></svg>
+                <div>
+                  <h4 class="fw-bold mb-0" style="color: rgb(230, 228, 228);">Featured title</h4>
+                  <p style="color: rgb(230, 228, 228);">Paragraph of text beneath the heading to explain the heading.</p>
+                </div>
+              </div>
+              <div class="col d-flex align-items-start">
+                <svg class="bi text-muted flex-shrink-0 me-3" width="1.75em" height="1.75em"><use xlink:href="#calendar3"/></svg>
+                <div>
+                  <h4 class="fw-bold mb-0" style="color: rgb(230, 228, 228);">Featured title</h4>
+                  <p style="color: rgb(230, 228, 228);">Paragraph of text beneath the heading to explain the heading.</p>
+                </div>
+              </div>
+              <div class="col d-flex align-items-start">
+                <svg class="bi text-muted flex-shrink-0 me-3" width="1.75em" height="1.75em"><use xlink:href="#home"/></svg>
+                <div>
+                  <h4 class="fw-bold mb-0" style="color: rgb(230, 228, 228);">Featured title</h4>
+                  <p style="color: rgb(230, 228, 228);">Paragraph of text beneath the heading to explain the heading.</p>
+                </div>
+              </div>
+              <div class="col d-flex align-items-start">
+                <svg class="bi text-muted flex-shrink-0 me-3" width="1.75em" height="1.75em"><use xlink:href="#speedometer2"/></svg>
+                <div>
+                  <h4 class="fw-bold mb-0" style="color: rgb(230, 228, 228);">Featured title</h4>
+                  <p style="color: rgb(230, 228, 228);">Paragraph of text beneath the heading to explain the heading.</p>
+                </div>
+              </div>
+              <div class="col d-flex align-items-start">
+                <svg class="bi text-muted flex-shrink-0 me-3" width="1.75em" height="1.75em"><use xlink:href="#toggles2"/></svg>
+                <div>
+                  <h4 class="fw-bold mb-0" style="color: rgb(230, 228, 228);">Featured title</h4>
+                  <p style="color: rgb(230, 228, 228);">Paragraph of text beneath the heading to explain the heading.</p>
+                </div>
+              </div>
+              <div class="col d-flex align-items-start">
+                <svg class="bi text-muted flex-shrink-0 me-3" width="1.75em" height="1.75em"><use xlink:href="#geo-fill"/></svg>
+                <div>
+                  <h4 class="fw-bold mb-0" style="color: rgb(230, 228, 228);">Featured title</h4>
+                  <p style="color: rgb(230, 228, 228);">Paragraph of text beneath the heading to explain the heading.</p>
+                </div>
+              </div>
+              <div class="col d-flex align-items-start">
+                <svg class="bi text-muted flex-shrink-0 me-3" width="1.75em" height="1.75em"><use xlink:href="#tools"/></svg>
+                <div>
+                  <h4 class="fw-bold mb-0" style="color: rgb(230, 228, 228);">Featured title</h4>
+                  <p style="color: rgb(230, 228, 228);">Paragraph of text beneath the heading to explain the heading.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <nav class="navbar navbar-expand-lg bg-dark" id="mynav">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="{% url 'home'%}">XLEX</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation" style="color: white;">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="{% url 'home'%}">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'posts-list'%}">Posts</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'casos-list'%}">Casos</a>
+                        </li>
+                    </ul>
+                </div>
+                <ul class="nav justify-content-end">
+                    <li class="nav-item">
+                      <a class="nav-link active" aria-current="page" href="#">Active</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link disabled">Disabled</a>
+                    </li>
+                  </ul>
+            </div>
+          </nav>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy" crossorigin="anonymous"></script>
+
+</body>
+</html>

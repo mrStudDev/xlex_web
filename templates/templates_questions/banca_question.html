@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+
+
+{% block questions %}
+    <div class="jumbotron jumbotron-fluid" style="background-color: rgb(240, 240, 240);">
+        <div class="container"><br>
+            {% if banca_question_questions %}
+            <h3 style="text-transform: uppercase">Banca | {{ cats }}</h3><br>
+        </div>
+    </div>
+    <div class="container">
+        <div class="col-sm-6 col-md-8" style="margin-top:10px;">
+            <div class="container-category-list">
+                {% for question in banca_question_questions %}
+                    <div class="card mb-3" style="max-width: 100%; padding: 0px;">
+                        <div class="row g-0">
+                            <div class="col-md-12">
+                                <div class="card-body">
+                                    <h6 class="card-title" style="text-transform: uppercase;">
+                                        <a href="{% url 'question-single' question.pk %}">
+                                            {{ question.title_question | slice:":71" }}
+                                        </a>
+                                    </h6>
+                                    <div>
+                                    <small class="card-text" style="margin-top:10px;">
+                                        {{ question.meta_question | safe | slice:":150" }}...
+                                    </small>
+                                    <br>
+                                    </div>
+                                    <span style="margin-top:10px;">
+                                        Materia: 
+                                        <a href="{% url 'materia-question' question.materia_question %}" style="color:rgb(255, 1, 1); font-size:14px; font-family:Calibri;">
+                                            {{ question.materia_question }}
+                                        </a> 
+                                    </span>
+                                    . | Banca: 
+                                    <span style="font-size:14px; font-family:Calibri; text-decoration: underline; margin-top:5px; color:green">
+                                       <strong><a href="{% url 'banca-question' question.banca_question %}"></a></strong>
+                                        {{ question.banca_question }}
+                                        </a>
+                                    </span><br>
+                                    <div style="margin-top:5px;">
+                                        <small style="font-size:10px;"><strong> | In:</strong> {{ question.data }}</small>
+                                        <small style="font-size:10px;"> <strong> | By:</strong> {{ question.author.first_name }} {{ question.author.last_name }}</small>
+                                        <center style="margin-top:5px;"><a href="{% url 'question-single' question.pk %}"><small>Leia mais</small></a></center>                                                 
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>                            
+                {% endfor %}    
+            </div>    
+        </div>
+        <center>
+            <a href="{% url 'questions-list' %}" class="btn btn-outline-secondary btn-lg px-4"> <small>Go back in Question list</small></a>
+            <a href="{% url 'home' %}" class="btn btn-outline-secondary btn-lg px-4"> <small>Go back Home</small></a>
+            <br/><br/>
+        </center>
+            {% else %}
+                <div class="container-fluid">
+                    <div class="container">
+                        <h2>Sorry! This category law page does not exist!!!</h2>
+                        <a href="{% url 'questions-list' %}" class="btn btn-outline-secondary btn-lg px-4"> <small>Go back in Questions list</small></a>
+                        <a href="{% url 'home' %}" class="btn btn-outline-secondary btn-lg px-4"> <small>Go back Home</small></a>
+                        <br/><br/>
+                    </div>
+                </div>
+        {% endif %}
+    </div>
+{% endblock %}
