@@ -32,6 +32,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'questions-list'%}">Questions</a>
                     </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="{% url 'sumulas-list' %}">Súmulas</a>
+                  </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Dropdown link
@@ -65,9 +68,12 @@
               <a class="nav-link" href="{% url 'add_casos' %}" style="font-size: 12px; color:rgb(8, 74, 255);">Add Casos</a>
               <a class="nav-link" href="{% url 'add_direito_caso' %}" style="font-size: 12px; color:rgb(8, 74, 255);">Add Dto_Casos</a>
               <a class="nav-link" href="{% url 'add_materia_caso' %}" style="font-size: 12px; color:rgb(8, 74, 255);">Add Mat_Casos</a>
-              <a class="nav-link" href="{% url 'add_questions' %}" style="font-size: 12px; color: rgb(255, 63, 255);">Add Questions</a>
-              <a class="nav-link" href="{% url 'add_materia_question' %}" style="font-size: 12px; color: rgb(255, 63, 255);">Add Mat_Questions</a>
-              <a class="nav-link" href="{% url 'add_banca_question' %}" style="font-size: 12px; color: rgb(255, 63, 255);">Add Banca_Questions</a>
+              <a class="nav-link" href="{% url 'add_questions' %}" style="font-size: 12px; color: rgb(255, 63, 255);">Add Quest</a>
+              <a class="nav-link" href="{% url 'add_materia_question' %}" style="font-size: 12px; color: rgb(255, 63, 255);">Add Mat_Quest</a>
+              <a class="nav-link" href="{% url 'add_banca_question' %}" style="font-size: 12px; color: rgb(255, 63, 255);">Add Banca_Quest</a>
+              <a class="nav-link" href="{% url 'add-sumula' %}" style="font-size: 12px; color: rgb(255, 226, 7);">Add Súmula</a>
+              <a class="nav-link" href="{% url 'add-sumula-materia' %}" style="font-size: 12px; color: rgb(255, 226, 7);">Add Súmula_Mat</a>
+              <a class="nav-link" href="{% url 'add-sumula-tribunal' %}" style="font-size: 12px; color: rgb(255, 226, 7);">Add Súmula_Trib</a>
 
             </div>
             <a href="{% url 'logout'%}" style="float:right; color:rgb(14, 180, 14); font-size: 12px;"> | Logout >>></a>
@@ -117,17 +123,17 @@
         {% endblock %}  
 
         <!-- Casos List--> 
-
         {% block casos %}
 
         {% endblock %}
 
+        <!-- Questions List--> 
         {% block questions %}
 
         {% endblock %}
 
-
-        {% block blog %}
+        <!-- Súmulas List--> 
+        {% block sumulas %}
 
         {% endblock %}
 

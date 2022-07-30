@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+
+
+{% block sumulas %}
+    <div class="jumbotron jumbotron-fluid" style="background-color: rgb(240, 240, 240);">
+        <div class="container"><br>
+            {% if materia_sumula_sumulas %}
+            <h3 style="text-transform: uppercase">Súmula Matéria | {{ cats }}</h3><br>
+        </div>
+    </div>
+    <div class="container">
+        <div class="col-sm-6 col-md-8" style="margin-top:10px;">
+            <div class="container-category-list">
+                {% for sumula in materia_sumula_sumulas %}
+                    <div class="card mb-3" style="max-width: 100%; padding: 0px;">
+                        <div class="row g-0">
+                            <div class="col-md-12">
+                                <div class="card-body">
+                                    <h6 class="card-title" style="text-transform: uppercase;">
+                                        <a href="{% url 'sumula-single' sumula.pk %}">
+                                            {{ sumula.title_sumula | slice:":71" }}
+                                        </a>
+                                    </h6>
+                                    <small class="card-text" style="margin-top:10px;">{{ sumula.meta_sumula | safe | slice:":150" }}</small><br>
+                                    <span style="font-size:15px; font-family:Calibri;  margin-top: 5px;">
+                                        <strong>Materia Súmula </strong>
+                                        <a href="{% url 'sumula-materia' sumula.sumula_materia %}" style="color:red; font-size:15px; font-family:Calibri; text-decoration: underline; margin-top:5px;">
+                                            {{ sumula.sumula_materia }}
+                                        </a>
+                                    
+                                    <strong> | Órgão: </strong>
+                                        <strong>
+                                            <a href="{% url 'sumula-tribunal' sumula.sumula_tribunal %}" style="color:green; font-size:15px; font-family:Calibri; margin-top:10px;">
+                                                {{ sumula.sumula_tribunal }}
+                                            </a>
+                                        </strong>
+                                    </span>    
+                                    <br>
+                                    <div style="margin-top:5px;">
+                                        <small style="font-size:10px;"><strong> | In:</strong> {{ sumula.data }}</small>
+                                        <small style="font-size:10px;"> <strong> | By:</strong> {{ sumula.author.first_name }} {{ sumula.author.last_name }}</small>
+                                        <center style="margin-top:5px;">
+                                            <a href="{% url 'question-single' sumula.pk %}">
+                                                <small>Leia mais</small>
+                                            </a>
+                                        </center>                                                 
+                                    </div>                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>                            
+                {% endfor %}    
+            </div>    
+        </div>
+    </div>
+    <center>
+        <a href="{% url 'sumulas-list' %}" class="btn btn-outline-secondary btn-lg px-4"> <small>Go back in Súmulas list</small></a>
+        <a href="{% url 'home' %}" class="btn btn-outline-secondary btn-lg px-4"> <small>Go back Home</small></a>
+        <br/><br/>
+    </center>
+        {% else %}
+            <div class="container-fluid">
+                <div class="container">
+                    <h2>Sorry! This category law page does not exist!!!</h2>
+                    <a href="{% url 'sumulas-list' %}" class="btn btn-outline-secondary btn-lg px-4"><small>Go back in SÚmulas list</small></a>
+                    <a href="{% url 'home' %}" class="btn btn-outline-secondary btn-lg px-4"><small>Go back Home</small></a>
+                    <br/><br/>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}

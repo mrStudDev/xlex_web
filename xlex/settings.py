@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'app_posts',
     'app_casos',
     'app_questions',
+    'app_sumulas',
     'ckeditor',
     'app_members',
 ]
@@ -140,3 +141,14 @@ CKEDITOR_UPLOAD_PATH = "static/uploads/"
 
 LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'home'
+
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': 'full',
+        'height': 400,
+        'width': 1000,
+    },
+}
+JAZZMIN_UI_TWEAKS = {
+    "theme": "slate",
+}

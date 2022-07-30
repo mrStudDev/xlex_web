@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block title %}{{ object.title_caso }} {% endblock %}
+{% block title %}{{ object.title_question }} {% endblock %}
 
 
 {% block questions %}
@@ -47,7 +47,7 @@
                     <br><br>
                     <small style="font-size:19px; font-family:Calibri; text-align:justify"><strong>E)</strong>{{ object.alternativa_e | safe }}</small>
                     <br><br>                                   
-                </div><a href="{% url 'resposta-question' question.pk %}" class="btn btn-outline-secondary btn-lg px-4;" style="background-color: rgb(79, 242, 79); color:white"> <small>Revelar resposta</small></a>              
+                </div><a href="{% url 'resposta-question' question.pk %}" class="btn btn-outline-secondary btn-lg px-4;" style="background-color: rgb(10, 3, 36); color:white"> <small>Revelar resposta</small></a>              
             </div>
            
             </strong>
@@ -97,7 +97,7 @@
                     <br><br>
                     <small style="font-size:19px; font-family:Calibri; text-align:justify"><strong>E)</strong>{{ object.alternativa_e | safe }}</small>
                     <br><br>                                   
-                </div><a href="{% url 'resposta-question' question.pk %}" class="btn btn-outline-secondary btn-lg px-4;" style="background-color: rgb(79, 242, 79); color:white"> <small>Revelar resposta</small></a>              
+                </div><a href="{% url 'resposta-question' question.pk %}" class="btn btn-outline-secondary btn-lg px-4;" style="background-color:rgb(10, 3, 36); color:white"> <small>Revelar resposta</small></a>              
             </div>
            
             </strong>

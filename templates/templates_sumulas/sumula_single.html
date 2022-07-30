@@ -1,0 +1,106 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}{{ object.title_sumula }} {% endblock %}
+
+
+{% block questions %}
+    {% if user.is_authenticated %}
+        <div class="jumbotron jumbotron-fluid" style="background-color: rgb(240, 240, 240);">
+            <div class="container">
+                <br>
+                <h2 style="text-transform: uppercase">{{ object.title_sumula }}</h2>
+                <hr>
+                <small style="font-size:15px; font-family:Calibri;">
+                    <strong>Matéria: </strong>
+                    <strong style="color: rgb(12, 128, 16);">{{ object.sumula_materia }}</strong> | 
+                    <strong>Órgão: </strong>
+                    <strong style="color: green">{{ object.sumula_tribunal }}</strong> | 
+                    <strong>Data: </strong>
+                    <strong style="color: black">{{ object.data }}</strong> 
+                </small>
+                <br><br>
+                edit-delete
+            </div>
+        </div>
+        <br>
+        
+        <div class="container" style="width: 90%;">
+            <div class="card" style="border-radius:10px;">
+                <div class="container" style="margin-left: 2%; margin-right:2%; margin-top:2%; width:96%;">
+                    <a style="color:rgb(156, 155, 158); font-size:19px; font-family:Calibri; margin-top: 5px;">
+                        <strong> {{ object.title_sumula }}</strong>
+                    </a>
+                    <hr>
+                    <br>
+                    <small style="font-size:19px; font-family:Calibri; text-align:justify"><strong>{{ object.content_sumula | safe }}</strong> </small>
+                    <br>
+                </div>              
+            </div>
+            <br><br>
+            <div class="container" style="width: 90%">
+                <small style="font-size:19px; font-family:Calibri; text-align:justify">{{ object.fundamentacao_sumula | safe }}</small>   
+            </div><br>
+            
+            <small><strong>Obrigado pela Leitura! .MR</strong></small><br>
+                <br>
+                <hr>
+                <h6><strong>Tags</strong> | {{ object.tags_sumula }}</h6>
+                <strong>
+                    <small style="color:rgb(17, 125, 37);">Súmula: {{ object.sumula_materia }}</small> | 
+                    <small style="color:rgb(24, 156, 24);">Órgão: {{ object.sumula_tribunal }}</small> |
+                    <small>{{ object.title_sumula }}</small>
+                    <small>
+                        <p style="font-size:12px; margin-top:5px;">
+                            <strong>Post Súmula: </strong>:  {{ object.author.first_name }} {{ object.author.last_name }}
+                        </p>
+                    </small>           
+            </strong>
+                <br>
+                <a href="{% url 'sumulas-list' %}" class="btn btn-outline-secondary btn-lg px-4"> <small>Go back in Súmulas list</small></a>
+                <a href="{% url 'home' %}" class="btn btn-outline-secondary btn-lg px-4"> <small>Go back Home</small></a>
+                </div>
+        </div>
+
+
+
+    {% else %}
+        <div class="jumbotron jumbotron-fluid" style="background-color: rgb(240, 240, 240);">
+            <div class="container">
+                <br>
+                <h2 style="text-transform: uppercase">{{ object.title_sumula }}</h2>
+                <hr>
+                <small>
+                    <span class="badge" style="color:white; font-size:14px; font-family:Calibri; background-color: rgb(19, 19, 66);">
+                        {{ object.sumula_materia }}
+                    </span>
+                    Data: <small>{{ object.data }}</small><br>
+                </small>
+                <br>
+            </div>
+        </div>
+        <br>
+        <div class="container" style="width: 90%;">
+            Materia | Súmula:
+            <strong>
+                <a style="color:rgb(21, 143, 42); font-size:16px; font-family:Calibri;  margin-top: 5px;">{{ object.sumula_materia }}</a> |
+                <a style="color:rgb(18, 19, 18); font-size:16px; font-family:Calibri;  margin-top: 5px;">{{ object.sumula_tribunal }}</a>
+                <br><br>
+            </strong>
+            <div class="card" style="border-radius:10px;">
+                <div class="container" style="margin-left: 2%; margin-right:2%; margin-top:2%; width:96%;">
+                    Sumula: <a style="color:rgb(18, 19, 18); font-size:16px; font-family:Calibri; margin-top: 5px;"><strong> {{ object.title_sumula }}</strong></a>
+                    <br><br>
+                    <small style="font-size:19px; font-family:Calibri; text-align:justify">{{ object.content_sumula | safe }}</small>
+                    <br>
+                </div>              
+            </div>
+           
+            </strong>
+            <br><br>
+            <a href="{% url 'sumulas-list' %}" class="btn btn-outline-secondary btn-lg px-4"> <small>Go back in Súmulas list</small></a>
+            <a href="{% url 'home' %}" class="btn btn-outline-secondary btn-lg px-4"> <small>Go back Home</small></a>
+            </div>
+        </div>
+    {% endif %}
+    <br><br>
+{% endblock %}

@@ -9,55 +9,91 @@
         </div>
     </div>
     <div class="container">
-        <div class="col-sm-6 col-md-8" style="margin-top:10px;">
-            <div class="container-category-list">
-                {% for question in materia_question_questions %}
-                    <div class="card mb-3" style="max-width: 100%; padding: 0px;">
-                        <div class="row g-0">
-                            <div class="col-md-12">
-                                <div class="card-body">
-                                    <h6 class="card-title" style="text-transform: uppercase;">
-                                        <a href="{% url 'question-single' question.pk %}">
-                                            {{ question.title_question | slice:":71" }}
-                                        </a>
-                                    </h6>
-                                    <small class="card-text" style="margin-top:10px;">{{ question.meta_question | safe | slice:":150" }}</small><br>
-                                    <span style="font-size:15px; font-family:Calibri;  margin-top: 5px;">
-                                        <strong>Materia </strong>
-                                        <a href="{% url 'materia-question' question.materia_question %}" style="color:red; font-size:15px; font-family:Calibri; text-decoration: underline; margin-top:5px;">
-                                            {{ question.materia_question }}
-                                        </a>
-                                    
-                                    <strong> | Banca </strong>
-                                        <strong>
-                                            <a href="{% url 'banca-question' question.banca_question %}" style="color:green; font-size:15px; font-family:Calibri; margin-top:10px;">
-                                                {{ question.banca_question }}
-                                            </a>
-                                        </strong>
-                                    </span>    
-                                    <br>
-                                    <div style="margin-top:5px;">
-                                        <small style="font-size:10px;"><strong> | In:</strong> {{ question.data }}</small>
-                                        <small style="font-size:10px;"> <strong> | By:</strong> {{ question.author.first_name }} {{ question.author.last_name }}</small>
-                                        <center style="margin-top:5px;">
+        <div class="row g-0" style="margin-top:1px; margin-right: 5px;">
+            <div class="col-sm-6 col-md-8" style="margin-top:10px;">
+                <div class="container-category-list">
+                    {% for question in materia_question_questions %}
+                        <div class="card mb-3" style="max-width: 100%; padding: 0px;">
+                            <div class="row g-0">
+                                <div class="col-md-12">
+                                    <div class="card-body">
+                                        <h6 class="card-title" style="text-transform: uppercase;">
                                             <a href="{% url 'question-single' question.pk %}">
-                                                <small>Leia mais</small>
+                                                {{ question.title_question | slice:":71" }}
                                             </a>
-                                        </center>                                                 
-                                    </div>                                    
+                                        </h6>
+                                        <small class="card-text" style="margin-top:10px;">{{ question.meta_question | safe | slice:":150" }}</small><br>
+                                        <span style="font-size:15px; font-family:Calibri;  margin-top: 5px;">
+                                            <strong>Materia </strong>
+                                            <a href="{% url 'materia-question' question.materia_question %}" style="color:red; font-size:15px; font-family:Calibri; text-decoration: underline; margin-top:5px;">
+                                                {{ question.materia_question }}
+                                            </a>
+                                        
+                                        <strong> | Banca </strong>
+                                            <strong>
+                                                <a href="{% url 'banca-question' question.banca_question %}" style="color:green; font-size:15px; font-family:Calibri; margin-top:10px;">
+                                                    {{ question.banca_question }}
+                                                </a>
+                                            </strong>
+                                        </span>    
+                                        <br>
+                                        <div style="margin-top:5px;">
+                                            <small style="font-size:10px;"><strong> | In:</strong> {{ question.data }}</small>
+                                            <small style="font-size:10px;"> <strong> | By:</strong> {{ question.author.first_name }} {{ question.author.last_name }}</small>
+                                            <center style="margin-top:5px;">
+                                                <a href="{% url 'question-single' question.pk %}">
+                                                    <small>Leia mais</small>
+                                                </a>
+                                            </center>                                                 
+                                        </div>                                    
+                                    </div>
                                 </div>
                             </div>
+                        </div>                            
+                    {% endfor %}    
+                </div>    
+            </div>
+            <div class="col-6 col-md-4">
+                <div class="col-md-10 mx-auto col-lg-12">
+                    <form class="p-4 p-md-5 border rounded-3" style="margin-left:10px; margin-top:10px;">
+                        <h4>Subscribe</h4><hr>
+                        <div class="form-floating mb-3">
+                            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+                            <label for="floatingInput">Email address</label>
                         </div>
-                    </div>                            
-                {% endfor %}    
-            </div>    
+                        <div class="form-floating mb-3">
+                            <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+                            <label for="floatingPassword">Password</label>
+                        </div>
+                        <div class="checkbox mb-3">
+                            <label>
+                                <input type="checkbox" value="remember-me"> Remember me
+                            </label>
+                        </div>
+                        <button class="w-100 btn btn-outline-secondary" type="submit" style="background-color: rgb(19, 19, 66);">Sign up</button>
+                        <hr class="my-4">
+                        <small class="text-muted">By clicking Sign up, you agree to the terms of use.</small>
+                    </form>
+                </div>
+                <br>
+                <div class="col-md-10 mx-auto col-lg-12">
+                    <form class="p-4 p-md-5 border rounded-3">
+                        <div class="form-floating mb-3">          
+                        </div><br><hr>
+                        <hr class="my-4">
+                        <small class="text-muted">By clicking Sign up, you agree to the terms of use.</small>
+                    </form>
+                    <br><br>
+                </div>
+            </div>
+            
         </div>
     </div>
-    <center>
-        <a href="{% url 'questions-list' %}" class="btn btn-outline-secondary btn-lg px-4"> <small>Go back in Questions list</small></a>
-        <a href="{% url 'home' %}" class="btn btn-outline-secondary btn-lg px-4"> <small>Go back Home</small></a>
-        <br/><br/>
-    </center>
+        <center>
+            <a href="{% url 'questions-list' %}" class="btn btn-outline-secondary btn-lg px-4"> <small>Go back in Questions list</small></a>
+            <a href="{% url 'home' %}" class="btn btn-outline-secondary btn-lg px-4"> <small>Go back Home</small></a>
+            <br/><br/>
+        </center>
         {% else %}
             <div class="container-fluid">
                 <div class="container">
@@ -70,3 +106,4 @@
         {% endif %}
     </div>
 {% endblock %}
+ 

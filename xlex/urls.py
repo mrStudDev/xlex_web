@@ -24,6 +24,7 @@ urlpatterns = [
     path('posts/', include('app_posts.urls')),
     path('casos/', include('app_casos.urls')),
     path('questions/', include('app_questions.urls')),
+    path('sumulas/', include('app_sumulas.urls')),
     path('ckeditor/', include('ckeditor_uploader.urls')),
     path('', include('django.contrib.auth.urls')),
     path('', include('app_members.urls')),

@@ -11,6 +11,7 @@
                 <h2 style="text-transform: uppercase">{{ object.title_question }}</h2>
                 <hr>
                 <small style="font-size:15px; font-family:Calibri;">
+                    <h2 style="color: red;">Resposta</h2>
                     <strong>Matéria: </strong>
                     <strong style="color: red;">{{ object.materia_question }}</strong> | 
                     <strong>Banca: </strong>
@@ -25,13 +26,15 @@
         </div>
         <br>
         <div class="container">
-            Materia | Question:
+            Materia Questão:
             <strong>
-                <a style="color:rgb(21, 143, 42); font-size:16px; font-family:Calibri;  margin-top: 5px;">{{ object.materia_question }}</a> |
-                <a style="color:rgb(18, 19, 18); font-size:16px; font-family:Calibri;  margin-top: 5px;">{{ object.title_question }}</a>
-                <br><br>
+                <a style="color:rgb(21, 143, 42); font-size:16px; font-family:Calibri;  margin-top: 5px;">{{ object.materia_question }}</a> | 
             </strong>
-            <h2 style="color: red;">Resposta</h2>
+            Titulo Questão:
+            <strong>
+                <a style="color:rgb(18, 19, 18); font-size:16px; font-family:Calibri;  margin-top: 5px;">{{ object.title_question }}</a>
+            </strong>
+            <br><br>
             <div class="card" style="border-radius:10px;">
                 <div class="container" style="margin-left: 2%; margin-right:2%; margin-top:2%; width:96%;">
                     Question: <a style="color:rgb(18, 19, 18); font-size:16px; font-family:Calibri; margin-top: 5px;"><strong> {{ object.title_question }}</strong></a>
@@ -48,18 +51,39 @@
                     <br><br>
                     <small style="font-size:19px; font-family:Calibri; text-align:justify"><strong>E)</strong>{{ object.alternativa_e | safe }}</small>
                     <br><br>
-                    <small style="font-size:19px; font-family:Calibri; text-align:justify; color: red;"><strong>{{ object.alternativa_correta | safe }}</strong></small>                                   
-                </div>              
+                    <small style="font-size:19px; font-family:Calibri; text-align:justify; color: rgb(240, 91, 91);"><strong>{{ object.alternativa_correta | safe }}</strong></small>
+                    <br><br>
+                </div>             
             </div>
-            <br>
-            <div class="container" style="width:95%;">
-                <h5 style="margin-top: 20px; text-decoration:overline rgb(214, 214, 214);">Legislação Pertinente</h5>
-                <small style="font-family:Calibri; font-size: 19px; text-align:justify;">{{ object.lei_question | safe }}</small>
-                <br>
-                <h5 style="margin-top: 20px; text-decoration:overline rgb(214, 214, 214);">Jurisprudência</h5>
-                <small style="font-family:Calibri; font-size: 19px; text-align:justify;">{{ object.jurisprudencia_question | safe }}</small>
-                <br>
+            <br><br>
+            <center>
+                <h4 style="color:rgb(164, 164, 164);">FUNDAMENTAÇÃO I</h4>
+            </center>
+            <div class="card" style="border-radius:10px;">
+                <div class="container" style="width:95%; margin-top: 20px;">
+                    <h5 style="margin-top: 20px; text-decoration:overline rgb(214, 214, 214);">
+                        Legislação Pertinente
+                    </h5>
+                    <br>
+                    <small style="font-family:Calibri; font-size: 19px; text-align:justify;">{{ object.lei_question | safe }}</small>
+                    <br>
+                </div>
             </div>
+            <br><br>
+            <center>
+                <h4 style="color:rgb(164, 164, 164);">FUNDAMENTAÇÃO II</h4>
+            </center>
+            <div class="card" style="border-radius:10px;">
+                <div class="container" style="width:95%; margin-top: 20px;">
+                    <h5 style="margin-top: 20px; text-decoration:overline rgb(214, 214, 214);">
+                        Jurisprudência
+                    </h5>
+                    <br>
+                    <small style="font-family:Calibri; font-size: 19px; text-align:justify;">{{ object.jurisprudencia_question | safe }}</small>
+                    <br>
+                </div>
+            </div>
+            <br><br>
             <small><strong>Obrigado pela Leitura! .MR</strong></small><br>
             <br>
             <hr>
@@ -83,57 +107,83 @@
 
 
     {% else %}
-        <div class="jumbotron jumbotron-fluid" style="background-color: rgb(240, 240, 240);">
-            <div class="container">
-                <br>
-                <h2 style="text-transform: uppercase">{{ object.title_question }}</h2>
-                <hr>
-                <small>
-                    <span class="badge" style="color:white; font-size:14px; font-family:Calibri; background-color: rgb(19, 19, 66);">
-                        {{ object.materia_question }}
-                    </span>
-                    Data: <small>{{ object.data }}</small><br>
-                </small>
-                <br>
-            </div>
-        </div>
-        <br>
+    <div class="jumbotron jumbotron-fluid" style="background-color: rgb(240, 240, 240);">
         <div class="container">
-            Materia | Question:
-            <strong>
-                <a style="color:rgb(21, 143, 42); font-size:16px; font-family:Calibri;  margin-top: 5px;">{{ object.materia_question }}</a> |
-                <a style="color:rgb(18, 19, 18); font-size:16px; font-family:Calibri;  margin-top: 5px;">{{ object.title_question }}</a>
-                <br><br>
-            </strong>
-            <h2 style="color: red;">Resposta</h2>
-            <div class="card" style="border-radius:10px;">
-                <div class="container" style="margin-left: 2%; margin-right:2%; margin-top:2%; width:96%;">
-                    Question: <a style="color:rgb(18, 19, 18); font-size:16px; font-family:Calibri; margin-top: 5px;"><strong> {{ object.title_question }}</strong></a>
-                    <br><br>
-                    <small style="font-size:19px; font-family:Calibri; text-align:justify">{{ object.question_ask | safe }}</small>
-                    <br>
-                    <small style="font-size:19px; font-family:Calibri; text-align:justify"><strong>A)</strong> {{ object.alternativa_a | safe }}</small>
-                    <br><br>
-                    <small style="font-size:19px; font-family:Calibri; text-align:justify"><strong>B)</strong>{{ object.alternativa_b | safe }}</small>
-                    <br><br>
-                    <small style="font-size:19px; font-family:Calibri; text-align:justify"><strong>C)</strong>{{ object.alternativa_c | safe }}</small>
-                    <br><br>
-                    <small style="font-size:19px; font-family:Calibri; text-align:justify"><strong>D)</strong>{{ object.alternativa_d | safe }}</small>
-                    <br><br>
-                    <small style="font-size:19px; font-family:Calibri; text-align:justify"><strong>E)</strong>{{ object.alternativa_e | safe }}</small>
-                    <br><br>
-                    <small style="font-size:19px; font-family:Calibri; text-align:justify; color: red;"><strong>{{ object.alternativa_correta | safe }}</strong></small>                                   
-                </div>              
-            </div>
             <br>
-            <div class="container" style="width:95%;">
-                <h5 style="margin-top: 20px; text-decoration:overline rgb(214, 214, 214);">Legislação Pertinente</h5>
-                <small style="font-family:Calibri; font-size: 19px; text-align:justify;">{{ object.lei_question | safe }}</small>
+            <h2 style="text-transform: uppercase">{{ object.title_question }}</h2>
+            <hr>
+            <small style="font-size:15px; font-family:Calibri;">
+                <h2 style="color: red;">Resposta</h2>
+                <strong>Matéria: </strong>
+                <strong style="color: red;">{{ object.materia_question }}</strong> | 
+                <strong>Banca: </strong>
+                <strong style="color: green">{{ object.banca_question }}</strong> | 
+                <strong>Data: </strong>
+                <strong style="color: black">{{ object.data }}</strong> 
+            </small>
+            <br><br>
+        </div>
+    </div>
+    <br>
+    <div class="container">
+        Materia Questão:
+        <strong>
+            <a style="color:rgb(21, 143, 42); font-size:16px; font-family:Calibri;  margin-top: 5px;">{{ object.materia_question }}</a> | 
+        </strong>
+        Titulo Questão:
+        <strong>
+            <a style="color:rgb(18, 19, 18); font-size:16px; font-family:Calibri;  margin-top: 5px;">{{ object.title_question }}</a>
+        </strong>
+        <br><br>
+        <div class="card" style="border-radius:10px;">
+            <div class="container" style="margin-left: 2%; margin-right:2%; margin-top:2%; width:96%;">
+                Question: <a style="color:rgb(18, 19, 18); font-size:16px; font-family:Calibri; margin-top: 5px;"><strong> {{ object.title_question }}</strong></a>
+                <br><br>
+                <small style="font-size:19px; font-family:Calibri; text-align:justify">{{ object.question_ask | safe }}</small>
                 <br>
-                <h5 style="margin-top: 20px; text-decoration:overline rgb(214, 214, 214);">Jurisprudência</h5>
-                <small style="font-family:Calibri; font-size: 19px; text-align:justify;">{{ object.jurisprudencia_question | safe }}</small>
-                <br>
+                <small style="font-size:19px; font-family:Calibri; text-align:justify"><strong>A)</strong> {{ object.alternativa_a | safe }}</small>
+                <br><br>
+                <small style="font-size:19px; font-family:Calibri; text-align:justify"><strong>B)</strong>{{ object.alternativa_b | safe }}</small>
+                <br><br>
+                <small style="font-size:19px; font-family:Calibri; text-align:justify"><strong>C)</strong>{{ object.alternativa_c | safe }}</small>
+                <br><br>
+                <small style="font-size:19px; font-family:Calibri; text-align:justify"><strong>D)</strong>{{ object.alternativa_d | safe }}</small>
+                <br><br>
+                <small style="font-size:19px; font-family:Calibri; text-align:justify"><strong>E)</strong>{{ object.alternativa_e | safe }}</small>
+                <br><br>
+                <small style="font-size:19px; font-family:Calibri; text-align:justify; color: rgb(240, 91, 91);"><strong>{{ object.alternativa_correta | safe }}</strong></small>
+                <br><br>
+            </div>             
+        </div>
+        <br><br>
+            <center>
+                <h4 style="color:rgb(164, 164, 164);">FUNDAMENTAÇÃO I</h4>
+            </center>
+            <div class="card" style="border-radius:10px;">
+                <div class="container" style="width:95%; margin-top: 20px;">
+                    <h5 style="margin-top: 20px; text-decoration:overline rgb(214, 214, 214);">
+                        Legislação Pertinente
+                    </h5>
+                    <br>
+                    <small style="font-family:Calibri; font-size: 19px; text-align:justify;">{{ object.lei_question | safe }}</small>
+                    <br>
+                </div>
             </div>
+            <br><br>
+            <center>
+                <h4 style="color:rgb(164, 164, 164);">FUNDAMENTAÇÃO II</h4>
+            </center>
+            <div class="card" style="border-radius:10px;">
+                <div class="container" style="width:95%; margin-top: 20px;">
+                    <h5 style="margin-top: 20px; text-decoration:overline rgb(214, 214, 214);">
+                        Jurisprudência
+                    </h5>
+                    <br>
+                    <small style="font-family:Calibri; font-size: 19px; text-align:justify;">{{ object.jurisprudencia_question | safe }}</small>
+                    <br>
+                </div>
+            </div>
+            <br><br>
             <small><strong>Obrigado pela Leitura! .MR</strong></small><br>
             <br>
             <hr>
